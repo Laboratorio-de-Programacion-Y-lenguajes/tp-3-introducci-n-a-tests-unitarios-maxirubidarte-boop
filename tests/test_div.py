@@ -11,6 +11,21 @@ def test_div_normal():
     assert div(6, 3) == 2.0
 
 
+
+@pytest.mark.parametrize("a, b, esperado", [
+    (3, 2, 1.5),      # Decimal
+    (-6, -3, 2.0),    # Negativos
+    (0, 5, 0.0),      # Cero dividido algo
+])
+def test_div_parametrizado(a, b, esperado):
+    assert div(a, b) == esperado
+
+
+def test_div_por_cero():
+    with pytest.raises(ZeroDivisionError):
+        div(6, 0)
+
+
 # --- TU TURNO ---
 # Agregá tests para los siguientes casos:
 #   - División que da resultado decimal (float)
